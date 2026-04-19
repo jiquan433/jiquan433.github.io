@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>书信 · 致刘毛毛</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #f9f3e6 0%, #ffe6d5 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Georgia', 'Times New Roman', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* 卡片容器 */
+        .container {
+            max-width: 780px;
+            width: 100%;
+            background: #fffef7;
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* 登录区域 */
+        .login-panel {
+            padding: 2rem 2rem 2rem 2rem;
+            background: #ffffff;
+            border-bottom: 1px solid #f0e2d0;
+        }
+
+        .login-title {
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: #b45f2b;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+            text-align: center;
+        }
+
+        .login-sub {
+            text-align: center;
+            color: #a77b4f;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #f0dbc8;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 6px;
+        }
+
+        .input-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #7c4a2a;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 1rem;
+            background: #fffbf5;
+            border: 1.5px solid #f3e1cf;
+            border-radius: 40px;
+            outline: none;
+            transition: all 0.2s;
+            font-family: monospace;
+        }
+
+        .input-group input:focus {
+            border-color: #e2a46b;
+            box-shadow: 0 0 0 3px rgba(226, 164, 107, 0.2);
+            background: white;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: #d6894a;
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .login-btn:hover {
+            background: #b96f38;
+            transform: translateY(-2px);
+        }
+
+        .error-msg {
+            color: #c23d2b;
+            background: #fff2ef;
+            border-radius: 40px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            margin-top: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        /* 书信区域 (默认隐藏) */
+        .letter-panel {
+            padding: 2rem 2rem 2.5rem 2rem;
+            background: #fffcf7;
+            display: none;
+            border-top: 1px solid #f3e6da;
+        }
+
+        .letter-content {
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            line-height: 1.85;
+            color: #2e241f;
+            font-size: 1rem;
+            text-align: justify;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .letter-content p {
+            margin-bottom: 1.2rem;
+            text-indent: 2em;
+        }
+
+        .letter-content .salute {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .letter-sign {
+            margin-top: 2rem;
+            text-align: right;
+            font-style: italic;
+            color: #9b6e48;
+            border-top: 1px solid #f2e0cf;
+            padding-top: 1.2rem;
+        }
+
+        .back-btn {
+            background: none;
+            border: 1px solid #e7cfbb;
+            padding: 6px 16px;
+            border-radius: 50px;
+            color: #9b6e48;
+            cursor: pointer;
+            margin-bottom: 1.2rem;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #f7ede3;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #cfb392;
+            padding: 1rem;
+            background: #fffcf5;
+            border-top: 1px solid #f6ede4;
+        }
+
+        @media (max-width: 560px) {
+            .login-panel, .letter-panel {
+                padding: 1.5rem;
+            }
+            .login-title {
+                font-size: 1.5rem;
+            }
+            .letter-content {
+                font-size: 0.92rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <!-- 登录界面 -->
+    <div id="loginSection" class="login-panel">
+        <div class="login-title">📜 锦书 · 予你</div>
+        <div style="text-align: center;">
+            <span class="login-sub">凭君传语 · 只许一人</span>
+        </div>
+        <div class="input-group">
+            <label>🌼 用户名</label>
+            <input type="text" id="username" placeholder="请输入用户名" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <label>🔒 密码</label>
+            <input type="password" id="password" placeholder="请输入密码" autocomplete="off">
+        </div>
+        <button class="login-btn" id="loginBtn">✨ 启封 · 见字如面 ✨</button>
+        <div id="errorMsg" class="error-msg"></div>
+        <div style="font-size: 0.7rem; text-align: center; margin-top: 1rem; color: #bc9a73;">只为一人开启</div>
+    </div>
+
+    <!-- 书信内容 (初始隐藏) -->
+    <div id="letterSection" class="letter-panel">
+        <div style="display: flex; justify-content: flex-start;">
+            <button class="back-btn" id="backBtn">← 退回登录页</button>
+        </div>
+        <div class="letter-content" id="letterText">
+            <!-- 动态书信内容会由js插入，但直接内嵌也可 -->
+        </div>
+        <div class="letter-sign">
+            —— 盛先生 · 四月十八日
+        </div>
+    </div>
+    <footer>♡ 爱藏四季，字字滚烫 ♡</footer>
+</div>
+
+<script>
+    // 预置的书信内容 (保留原始段落与情感)
+    const fullLetter = `亲爱的刘毛毛：
+
+你好！
+
+当你看到这封信的时候，我想你肯定收到了我送你的鲜花，还可能克服了很多我设置的关卡。说实话，在遇到你之前，我完全想象不到我会这么疯狂地爱上一个人。从去年的7月16日到现在，只有短短270次日升日落，但你的存在已经完全渗入了我的生活。每当我在冬天里捧起第一堆雪，每当我在春天里见到第一抹花，甚至就当我站在海边，听到浅浅的海浪拂过沙滩，我都会想起你，想到那些甜蜜的、痛苦的、独属我们的回忆。正是那些回忆，在我心里野蛮生长，缓缓爬满我每一寸心房，渗入我每一条血管，融成我对你的爱意——殷红如血，却又刻骨铭心。
+
+我是个笨拙的人，我总怕口中说出的爱太虚伪，所以我只能把我的爱融进四季——冬天就写在雪堆上，春天就写在落花里，夏天的话就写在沙滩上。闲暇时，我偶尔也会幻想未来的场景：比如在冬天，当你结束一天的工作，心情略微烦躁，就在回家的路上，你突然感觉脸上冰冰的，抬眼，雪花纷纷而下，或许突然间你会想起有人曾祝你天天开心，突然间会想起当时那些文字就写在一片浅浅的雪堆上，在微信上他还亲自拍给你看。又或者在春天，当你一觉睡醒，睁眼，却发现窗外桃花正开得正艳，你会不会想起，曾经有一个傻小子，满校园跑来跑去地捡花，只为拿花拼出你的名字。甚至是一个闷热的夏季，你打算去海边纳个凉，当你光脚踩过湿软的沙滩，感受着温凉的海水碰触脚底，你会不会想起——有人曾在这里给你写过天长地久的誓言，甚至现在拂过你脚底的海水，可能曾在十几年前就拂过当初少年的誓言。每每想到这些，我就会感觉我做的事有意义。就像捉迷藏，我把爱藏进四季，也许很久，也许就在现在，你会突然间发现它们。它们一定尝起来微苦又青涩，那是眼泪混着少年心绪的味道，就像刚劈开的青木瓜。
+
+我坚信这是宇宙间最浪漫的事。时间是宇宙中最理性的东西，它一去不返，不可挽回，但是靠人类共通的回忆，我们可以去跨过它，去触碰曾经的感动。不同于鲜花会谢、金戒指会丢，这些曾经的感动，我认为更接近永恒的定义，也是我认为对“我爱你”的最好注脚。
+
+我曾经一直读不懂《窄门》。我始终不理解，为什么极致的爱和痛会同时出现在安德烈和阿莉莎之间，为什么双方会那么拧巴——明明相爱，为什么一个人拼命地追，另一个却又拼命地逃。为什么放弃之后，仍然又放不下。更搞不明白那句“靠近你就靠近了痛苦，远离你就远离了幸福”。但是爱上你之后，我突然明白了：因为相爱所以才害怕被辜负、被伤害，所以才会强忍分离的痛苦，用理性去逃离。原来相爱才是最毒的癔症，原来逃离始终成不了解药，因为渴求你和幸福，所以我一次次地靠近你。
+
+所以，如果你问我——我后悔过和你在一块吗？我会回答：“不，一点都没有。”或许和你在一起会让人内耗，或许你从不像别人女朋友那样黏人，或许你从不会说甜言蜜语，但我爱你，我无可救药地爱你。我如此强烈地想念过你，埋怨过你，仰慕过你，心疼过你，我生命里早已不能没有你……我爱你，是爱你的一切——爱你的不完美，爱你的过去，爱你的痛苦，爱我对你的保护欲，更爱你的清醒与理性，更爱你偶尔沉醉于爱的样子。我可以坦然接受这个世界给我的一切，但我唯独不想失去你。
+
+我已经不在乎，也不想在乎高一的时候你爱过谁、谁爱过我，我只要现在的你……我发誓，只要现在你仍向我说出爱我，我依然会放下一切，坚定地奔向你，就像之前无数次发生的那样。就算恋爱脑也无所谓，我不想要清醒，也不想要太多理性，更不想对你设防。在你面前，我只想完全把我摊开，让你看到全部的我——足够坦诚，也足够热烈。我只想伏在你石榴裙下，对你说爱你。一直以来，我都在尽全力去爱着你，所以我想请你更在乎我一点，想请你不要再去伤害我，想请你对我更坦诚一点，更想请你更加爱我一点，因为这样我才能有更多的把握去创造属于我们的未来。
+
+用理性保护自己当然没关系，但是理性分析后，发现双方都是很好的人，为什么不把主导权交回感性一点呢？交给爱一点呢？如果有情人，双方都因为怕被伤害，用绝对理性紧紧裹住自己，不敢去付出真心，不敢去对感情专心，那这个世界也未免太孤独了一点。`;
+
+    // DOM 元素
+    const loginSection = document.getElementById('loginSection');
+    const letterSection = document.getElementById('letterSection');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('loginBtn');
+    const errorMsgDiv = document.getElementById('errorMsg');
+    const backBtn = document.getElementById('backBtn');
+    const letterTextContainer = document.getElementById('letterText');
+
+    // 验证凭据 (固定)
+    const VALID_USERNAME = "0927";
+    const VALID_PASSWORD = "0716";
+
+    // 显示书信内容 (将纯文本转为html段落，保留原格式)
+    function renderLetter() {
+        // 将信件内容按照双换行分割成段落，更自然
+        const paragraphs = fullLetter.split(/\n\s*\n/);
+        let htmlContent = '';
+        for (let para of paragraphs) {
+            // 去掉每段首尾多余空格，保留内部换行转为br?
+            let cleanPara = para.trim();
+            if (cleanPara.length === 0) continue;
+            // 处理开头的“亲爱的”特殊样式
+            if (cleanPara.startsWith('亲爱的刘毛毛')) {
+                htmlContent += `<p class="salute" style="font-weight:500;">${cleanPara.replace(/\n/g, '<br>')}</p>`;
+            } else {
+                // 普通段落，保留内部换行符
+                htmlContent += `<p>${cleanPara.replace(/\n/g, '<br>')}</p>`;
+            }
+        }
+        // 额外加上最后的落款避免丢失（原文末尾有“四月十八日 盛先生”，已在fullLetter里）
+        letterTextContainer.innerHTML = htmlContent;
+    }
+
+    // 登录验证逻辑
+    function attemptLogin() {
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        // 隐藏之前的错误消息
+        errorMsgDiv.style.display = 'none';
+        errorMsgDiv.innerText = '';
+
+        if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+            // 登录成功 -> 展示书信
+            loginSection.style.display = 'none';
+            letterSection.style.display = 'block';
+            // 渲染书信内容 (确保内容呈现)
+            renderLetter();
+            // 可选：清除输入框里的敏感信息
+            usernameInput.value = '';
+            passwordInput.value = '';
+        } else {
+            // 登录失败显示提示
+            errorMsgDiv.innerText = '❄️ 用户名或密码错误，仅一人可启 ❄️';
+            errorMsgDiv.style.display = 'block';
+            // 轻抖效果
+            const container = document.querySelector('.login-panel');
+            container.style.transform = 'translateX(4px)';
+            setTimeout(() => { container.style.transform = ''; }, 100);
+        }
+    }
+
+    // 退回登录页 (登出)
+    function backToLogin() {
+        loginSection.style.display = 'block';
+        letterSection.style.display = 'none';
+        // 清空错误提示
+        errorMsgDiv.style.display = 'none';
+        errorMsgDiv.innerText = '';
+        // 清空输入框，避免残留
+        usernameInput.value = '';
+        passwordInput.value = '';
+    }
+
+    // 绑定事件
+    loginBtn.addEventListener('click', attemptLogin);
+    backBtn.addEventListener('click', backToLogin);
+
+    // 支持按回车登录
+    function handleEnter(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            attemptLogin();
+        }
+    }
+    usernameInput.addEventListener('keypress', handleEnter);
+    passwordInput.addEventListener('keypress', handleEnter);
+
+    // 初始化：确保书信区域隐藏，登录区域可见
+    loginSection.style.display = 'block';
+    letterSection.style.display = 'none';
+    // 预加载渲染一次书信内容 (但不会显示, 等登录后展示)
+    renderLetter();
+</script>
+</body>
+</html>
